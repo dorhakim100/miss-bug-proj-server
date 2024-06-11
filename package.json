@@ -4,6 +4,7 @@
   "description": "Backend server of MissBugs",
   "main": "index.js",
   "scripts": {
+    "start": "nodemon --ignore \"./data\" server.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "type": "module",
@@ -11,6 +12,7 @@
   "license": "ISC",
   "dependencies": {
     "cookie-parser": "^1.4.6",
-    "express": "^4.19.2"
+    "express": "^4.19.2",
+    "follow-redirects": "^1.15.6"
   }
 }

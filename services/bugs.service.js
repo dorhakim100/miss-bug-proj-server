@@ -1,6 +1,6 @@
 import { utilService } from './util.service.js'
 
-export const bugService = {
+export const bugsService = {
   query,
   getById,
   remove,
@@ -8,6 +8,7 @@ export const bugService = {
 }
 
 let bugs = utilService.readJsonFile('./data/bugs.json')
+console.log(bugs)
 
 function query() {
   return Promise.resolve(bugs)
@@ -33,7 +34,7 @@ function save(bugToSave) {
     bugToSave._id = utilService.makeId()
     bugs.push(bugToSave)
   }
-  return _saveCarsToFile().then(() => carToSave)
+  return _saveBugsToFile().then(() => bugToSave)
 }
 
 function _saveBugsToFile() {
