@@ -9,16 +9,17 @@ export function BugIndex() {
   const [bugs, setBugs] = useState([])
 
   useEffect(() => {
-    console.log('works')
     loadBugs()
   }, [])
 
   function loadBugs() {
     // bugService.query().then(setBugs)
-    console.log('works')
-    bugService.query().then((bugs) => {
-      setBugs(bugs)
-    })
+
+    fetch('http://127.0.0.1:3030/api/bug')
+      .then((res) => res.json())
+      .then((bugs) => {
+        setBugs(bugs)
+      })
   }
 
   function onRemoveBug(bugId) {

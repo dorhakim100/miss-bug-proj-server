@@ -9,14 +9,14 @@ const port = 3030
 
 app.use(express.static('public'))
 
-app.get('/', (req, res) => {
-  res.send('Hello there')
-})
+// app.get('/', (req, res) => {
+//   res.send('Hello there')
+// })
 // app.listen(port, () => {
 //   console.log('Server ready at port 3030')
 // })
 
-app.get('/api/bugs', (req, res) => {
+app.get('/api/bug', (req, res) => {
   bugsService
     .query()
     .then((bugs) => res.send(bugs))
@@ -26,20 +26,20 @@ app.get('/api/bugs', (req, res) => {
     })
 })
 
-app.get('/api/bugs/save', (req, res) => {
-  const { _id, title, description, severity } = req.query
-  const bugToSave = { _id, title, description, severity: +severity }
+app.get('/api/bug/save', (req, res) => {
+  const { _id, title, severity } = req.query
+  const bugToSave = { _id, title, severity: +severity }
 
   bugsService.save(bugToSave).then((savedBug) => res.send(savedBug))
 })
 
-app.get('/api/bugs/:bugId', (req, res) => {
+app.get('/api/bug/:bugId', (req, res) => {
   const { bugId } = req.params
 
   bugsService.getById(bugId).then((bug) => res.send(bug))
 })
 
-app.get('/api/bugs/:bugId/remove', (req, res) => {
+app.get('/api/bug/:bugId/remove', (req, res) => {
   const { id } = req.params
 
   bugsService.remove(id).then(() => res.send(`Bug ${id} was deleted...`))
