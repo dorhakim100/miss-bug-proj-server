@@ -19,7 +19,8 @@ function getById(bugId) {
 }
 
 function remove(bugId) {
-  const idx = bugs.findIdx((bug) => bug._id === bugId)
+  console.log(bugs)
+  const idx = bugs.findIndex((bug) => bug._id === bugId)
   bugs.splice(idx, 1)
 
   return _saveBugsToFile()

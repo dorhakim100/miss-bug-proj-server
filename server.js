@@ -40,9 +40,11 @@ app.get('/api/bug/:bugId', (req, res) => {
 })
 
 app.get('/api/bug/:bugId/remove', (req, res) => {
-  const { id } = req.params
+  console.log('works')
+  const { bugId } = req.params
+  console.log(bugId)
 
-  bugsService.remove(id).then(() => res.send(`Bug ${id} was deleted...`))
+  bugsService.remove(bugId).then(() => res.send(`Bug ${bugId} was deleted...`))
 })
 
 app.listen(port, () =>
