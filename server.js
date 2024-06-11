@@ -18,7 +18,9 @@ app.get('/api/bug/save', (req, res) => {
 })
 
 app.get('/api/bug/:bugId', (req, res) => {
-  console.log('works')
+  const { bugId } = req.params
+  console.log(bugId)
+  res.send(bugId)
 })
 
 app.get('/api/bug/:bugId/remove', (req, res) => {
