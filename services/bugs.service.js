@@ -7,7 +7,7 @@ export const bugsService = {
   save,
 }
 
-let bugs = utilService.readJsonFile('./data/bugs.json')
+let bugs = utilService.readJsonFile('./data/bug.json')
 
 function query() {
   return Promise.resolve(bugs)
@@ -27,6 +27,7 @@ function remove(bugId) {
 }
 
 function save(bugToSave) {
+  console.log(bugToSave)
   if (bugToSave._id) {
     const idx = bugs.findIndex((bug) => bug._id === bugToSave._id)
     bugs.splice(idx, 1, bugToSave)

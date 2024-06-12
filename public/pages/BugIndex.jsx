@@ -36,21 +36,48 @@ export function BugIndex() {
   }
 
   function onAddBug() {
-    const bug = {
-      title: prompt('Bug title?'),
-      severity: +prompt('Bug severity?'),
-    }
-    bugService
-      .save(bug)
-      .then((savedBug) => {
-        console.log('Added Bug', savedBug)
-        setBugs((prevBugs) => [...prevBugs, savedBug])
-        showSuccessMsg('Bug added')
+    const bug = {}
+
+    Swal.fire({
+      title: 'Bug title?',
+      input: 'text',
+      icon: 'question',
+    }).then((title) => {
+      console.log(title)
+      bug.title = title.value
+      let severity = Swal.fire({
+        title: 'Bug severity?',
+        input: 'number',
+        icon: 'warning',
       })
-      .catch((err) => {
-        console.log('Error from onAddBug ->', err)
-        showErrorMsg('Cannot add bug')
-      })
+        .then((severity) => {
+          return (severity = severity.value)
+        })
+        .then((severity) => {
+          bug.severity = severity
+          Swal.fire({
+            title: 'Bug description?',
+            input: 'text',
+            icon: 'info',
+          }).then((description) => {
+            bug.description = description.value
+            console.log(bug)
+
+            bugService
+              .save(bug)
+              .then((savedBug) => {
+                console.log('Added Bug', savedBug)
+                setBugs((prevBugs) => [...prevBugs, savedBug])
+                showSuccessMsg('Bug added')
+              })
+              .catch((err) => {
+                console.log('Error from onAddBug ->', err)
+                showErrorMsg('Cannot add bug')
+              })
+          })
+          // })
+        })
+    })
   }
 
   function onEditBug(bug) {
