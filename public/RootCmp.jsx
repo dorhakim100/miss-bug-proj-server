@@ -11,7 +11,7 @@ import { AboutUs } from './pages/AboutUs.jsx'
 export function App() {
   return (
     <Router>
-      <div>
+      <div className='root'>
         <AppHeader />
         <main>
           <Routes>

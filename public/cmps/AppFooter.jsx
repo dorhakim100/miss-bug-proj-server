@@ -7,7 +7,7 @@ export function AppFooter() {
   }, [])
 
   return (
-    <footer>
+    <footer className='footer'>
       <p>coffeerights to all</p>
       <div className='footer-links-container'>
         <i className='fa-brands fa-facebook'></i>

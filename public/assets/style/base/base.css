@@ -8,6 +8,7 @@ html {
 body {
   margin: 0;
   color: var(--gray3);
+  background-color: rgb(234, 228, 234);
 }
 
 h1,
@@ -49,3 +50,4 @@ object {
 .about nav a {
     margin-right: 10px;
 }
+
