@@ -1,0 +1,49 @@
+footer{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    background-color: var(--clr1bg);
+    padding: 1em;
+
+    position: absolute;
+    bottom: 0px;
+    left: 0px;
+    right: 0px;
+}
+
+.footer-links-container{
+    display: flex;
+    gap: 1em;
+}
+
+.footer-links-container::before{
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+
+    background-color: black;
+    width: 80%;
+    height: 0.5px;
+}
+
+.footer-links-container>*{
+    cursor: pointer;
+    font-size: 1.5em;
+    transition: 0.1s;
+}
+
+.footer-links-container>.fa-facebook:hover{
+    color: rgb(60, 60, 239);
+}
+
+.footer-links-container>.fa-instagram:hover{
+    color: rgb(227, 60, 239);
+}
+
+.footer-links-container>.fa-twitter:hover{
+    color: rgb(54, 203, 240);
+}

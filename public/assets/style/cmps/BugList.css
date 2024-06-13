@@ -1,15 +1,31 @@
-.car-list {
-    padding: 15px 0 0;
+
+h3{
+    text-align: center;
+}
+
+.add-btn-container{
+display: flex;
+justify-content: center;
+}
+
+.add-btn{
+    height: 100px;
+}
+
+.bug-list {
+    /* padding: 15px 0 0; */
     list-style: none;
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
     gap: 15px;
 }
 
-.car-list li {
+.bug-list li {
     display: flex;
     flex-direction: column;
-    justify-content: space-around;
+    /* justify-content: space-around; */
+    justify-items: center;
     align-items: center;
     background-color: var(--clr1bg);
 }
+

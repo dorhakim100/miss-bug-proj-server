@@ -45,13 +45,13 @@ export function BugIndex() {
     }).then((title) => {
       console.log(title)
       bug.title = title.value
-      let severity = Swal.fire({
+      Swal.fire({
         title: 'Bug severity?',
         input: 'number',
         icon: 'warning',
       })
         .then((severity) => {
-          return (severity = severity.value)
+          return (severity = +severity.value)
         })
         .then((severity) => {
           bug.severity = severity
@@ -81,30 +81,41 @@ export function BugIndex() {
   }
 
   function onEditBug(bug) {
-    const severity = +prompt('New severity?')
-    const bugToSave = { ...bug, severity }
-    bugService
-      .save(bugToSave)
-      .then((savedBug) => {
-        console.log('Updated Bug:', savedBug)
-        setBugs((prevBugs) =>
-          prevBugs.map((currBug) =>
-            currBug._id === savedBug._id ? savedBug : currBug
+    let severity
+    Swal.fire({
+      title: 'Bug severity?',
+      input: 'number',
+      icon: 'warning',
+    }).then((output) => {
+      severity = +output.value
+      const bugToSave = { ...bug, severity }
+      bugService
+        .save(bugToSave)
+        .then((savedBug) => {
+          console.log('Updated Bug:', savedBug)
+          setBugs((prevBugs) =>
+            prevBugs.map((currBug) =>
+              currBug._id === savedBug._id ? savedBug : currBug
+            )
           )
-        )
-        showSuccessMsg('Bug updated')
-      })
-      .catch((err) => {
-        console.log('Error from onEditBug ->', err)
-        showErrorMsg('Cannot update bug')
-      })
+          showSuccessMsg('Bug updated')
+        })
+        .catch((err) => {
+          console.log('Error from onEditBug ->', err)
+          showErrorMsg('Cannot update bug')
+        })
+    })
   }
 
   return (
     <main>
       <h3>Bugs App</h3>
       <main>
-        <button onClick={onAddBug}>Add Bug ⛐</button>
+        <div className='add-btn-container'>
+          <button className='add-btn' onClick={onAddBug}>
+            Add Bug ⛐
+          </button>
+        </div>
         <BugList bugs={bugs} onRemoveBug={onRemoveBug} onEditBug={onEditBug} />
       </main>
     </main>

@@ -1,8 +1,8 @@
 export function Home() {
   return (
-    <section>
+    <section className='home-container'>
       <h2>Home is Home</h2>
-      <img src="assets/img/logo.png" />
+      <img src='assets/img/logo.png' />
     </section>
   )
 }
