@@ -23,6 +23,9 @@ justify-content: center;
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
     gap: 15px;
+    
+    height: 60vh;
+    overflow-y: scroll;
 }
 
 .bug-list li {

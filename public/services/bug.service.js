@@ -32,7 +32,7 @@ function save(bug) {
   return axios.get(BASE_URL + queryStr).then((res) => res.data)
 }
 
-function getDefaultFilter(filterBy = { txt: '' }) {
+function getDefaultFilter(filterBy = { txt: '', minSeverity: 0 }) {
   // console.log(filterBy)
-  return { txt: '' }
+  return filterBy
 }

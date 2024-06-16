@@ -13,7 +13,7 @@ export function BugIndex() {
 
   useEffect(() => {
     // loadBugs()
-    filterByTxt(filter).then((bugs) => {
+    filterBy(filter).then((bugs) => {
       console.log(bugs)
       setBugs(bugs)
     })
@@ -53,8 +53,14 @@ export function BugIndex() {
       bug.title = title.value
       Swal.fire({
         title: 'Bug severity?',
-        input: 'number',
+        input: 'range',
         icon: 'warning',
+        inputAttributes: {
+          min: '0',
+          max: '10',
+          step: '1',
+        },
+        inputValue: 5,
       })
         .then((severity) => {
           return (severity = +severity.value)
@@ -113,18 +119,19 @@ export function BugIndex() {
     })
   }
 
-  function filterByTxt(filterBy) {
+  function filterBy(filterBy) {
     console.log(filterBy)
     const regExp = new RegExp(filterBy.txt, 'i')
 
     return bugService.query(bugs).then((bugs) => {
-      if (!filterBy.txt) {
+      if (!filterBy.txt && !filterBy.minSeverity) {
         return bugs
       } else {
-        return bugs.filter(
-          (bug) => regExp.test(bug.title) || regExp.test(bug.description)
-          // regExp.test(bug.severity)
-        )
+        return bugs
+          .filter(
+            (bug) => regExp.test(bug.title) || regExp.test(bug.description)
+          )
+          .filter((bug) => bug.severity >= filterBy.minSeverity)
       }
     })
   }
@@ -137,7 +144,7 @@ export function BugIndex() {
           onAddBug={onAddBug}
           filter={filter}
           setFilter={setFilter}
-          filterByTxt={filterByTxt}
+          filterBy={filterBy}
         />
         <BugList bugs={bugs} onRemoveBug={onRemoveBug} onEditBug={onEditBug} />
       </main>
