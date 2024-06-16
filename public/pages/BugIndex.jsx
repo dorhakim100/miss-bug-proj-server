@@ -2,20 +2,26 @@
 import { bugService } from '../services/bug.service.js'
 import { showSuccessMsg, showErrorMsg } from '../services/event-bus.service.js'
 import { BugList } from '../cmps/BugList.jsx'
+import { UserInterface } from '../cmps/UserInterface.jsx'
+import { utilService } from '../services/util.service.js'
 
 const { useState, useEffect } = React
 
 export function BugIndex() {
   const [bugs, setBugs] = useState([])
+  const [filter, setFilter] = useState(bugService.getDefaultFilter())
 
   useEffect(() => {
-    console.log('works')
-    loadBugs()
-  }, [])
+    // loadBugs()
+    filterByTxt(filter).then((bugs) => {
+      console.log(bugs)
+      setBugs(bugs)
+    })
+  }, [filter])
 
   function loadBugs() {
     // bugService.query().then(setBugs)
-    console.log('works')
+    console.log(filter)
     bugService.query().then((bugs) => {
       setBugs(bugs)
     })
@@ -107,15 +113,32 @@ export function BugIndex() {
     })
   }
 
+  function filterByTxt(filterBy) {
+    console.log(filterBy)
+    const regExp = new RegExp(filterBy.txt, 'i')
+
+    return bugService.query(bugs).then((bugs) => {
+      if (!filterBy.txt) {
+        return bugs
+      } else {
+        return bugs.filter(
+          (bug) => regExp.test(bug.title) || regExp.test(bug.description)
+          // regExp.test(bug.severity)
+        )
+      }
+    })
+  }
+
   return (
     <main>
       <h3>Bugs App</h3>
       <main>
-        <div className='add-btn-container'>
-          <button className='add-btn' onClick={onAddBug}>
-            Add Bug ⛐
-          </button>
-        </div>
+        <UserInterface
+          onAddBug={onAddBug}
+          filter={filter}
+          setFilter={setFilter}
+          filterByTxt={filterByTxt}
+        />
         <BugList bugs={bugs} onRemoveBug={onRemoveBug} onEditBug={onEditBug} />
       </main>
     </main>

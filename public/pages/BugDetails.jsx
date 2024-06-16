@@ -21,9 +21,16 @@ export function BugDetails() {
 
   if (!bug) return <h1>loadings....</h1>
   return (
-    <div>
+    <div className='bug-details-container'>
       <h3>Bug Details 🐛</h3>
-      <h4>{bug.title}</h4>
+      <div className='bug-details-title-container'>
+        <h4>{bug.title}</h4>
+        {bug.severity <= 3 && <img src={`img/1.png`} alt='' />}
+        {bug.severity > 3 && bug.severity <= 7 && (
+          <img src={`img/2.png`} alt='' />
+        )}
+        {bug.severity > 7 && <img src={`img/3.png`} alt='' />}
+      </div>
       <p>
         Severity: <span>{bug.severity}</span>
       </p>

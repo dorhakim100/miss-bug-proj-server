@@ -10,6 +10,7 @@ export const bugService = {
   getById,
   save,
   remove,
+  getDefaultFilter,
 }
 
 function query() {
@@ -29,4 +30,9 @@ function save(bug) {
   }&description=${bug.description}&_id=${bug._id || ''}`
 
   return axios.get(BASE_URL + queryStr).then((res) => res.data)
+}
+
+function getDefaultFilter(filterBy = { txt: '' }) {
+  // console.log(filterBy)
+  return { txt: '' }
 }

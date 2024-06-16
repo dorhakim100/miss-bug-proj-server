@@ -1,17 +1,31 @@
-.car-details {
+.bug-details-container {
     display: flex;
     flex-direction: column;
-    align-items: flex-start;
+    align-items: center;
 }
-.car-details h1 {
+.bug-details-container h1 {
     color: var(--clr1);
     font-size: 2em;
     
 }
-.car-details h5 {
+
+.bug-details-title-container{
+    display: flex;
+    align-items: center;
+    justify-items: center;
+
+    gap: 5px;
+}
+
+.bug-details-title-container>img{
+    width: 2em;
+}
+
+
+.bug-details-container h5 {
     color: var(--clr2);
 }
-.car-details img {
+.bug-details-container img {
     max-width: 200px;
     display: block;
     margin: auto;
