@@ -12,6 +12,10 @@ export function BugDetails() {
     bugService
       .getById(bugId)
       .then((bug) => {
+        const time = +bug.createdAt
+        let date = new Date(time)
+        bug.date = date.toLocaleString()
+
         setBug(bug)
       })
       .catch((err) => {
@@ -24,17 +28,25 @@ export function BugDetails() {
     <div className='bug-details-container'>
       <h3>Bug Details 🐛</h3>
       <div className='bug-details-title-container'>
-        <h4>{bug.title}</h4>
+        <h3>{bug.title}</h3>
         {bug.severity <= 3 && <img src={`img/1.png`} alt='' />}
         {bug.severity > 3 && bug.severity <= 7 && (
           <img src={`img/2.png`} alt='' />
         )}
         {bug.severity > 7 && <img src={`img/3.png`} alt='' />}
       </div>
-      <p>
-        Severity: <span>{bug.severity}</span>
-      </p>
-      <p>Description: {bug.description}</p>
+      {bug.createdAt && <h4>{bug.date}</h4>}
+      <h4>Severity:</h4>
+      <p>{bug.severity}</p>
+      <h4>Description:</h4>
+      <p>{bug.description}</p>
+      <h4>Labels:</h4>
+      <div className='labels-container'>
+        {bug.labels &&
+          bug.labels.map((label) => {
+            return label.isChecked && <span>{label.name}</span>
+          })}
+      </div>
       <Link to='/bug'>Back to List</Link>
     </div>
   )

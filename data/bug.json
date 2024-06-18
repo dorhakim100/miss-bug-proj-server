@@ -7,51 +7,45 @@
     "createdAt": 1542107499454
   },
   {
-    "_id": "YhUhg",
-    "title": "Cannot edit",
-    "severity": 6,
-    "description": "Couldn't edit car"
-  },
-  {
-    "_id": "76gId",
-    "title": "Choku",
-    "severity": 3,
-    "description": "Fla"
-  },
-  {
-    "_id": "NTqfh",
-    "title": "Val",
-    "severity": 8,
-    "description": "RA"
-  },
-  {
-    "_id": "74l50",
-    "title": "Hlp",
+    "_id": "i7lDw",
+    "title": "Bla bla",
     "severity": 5,
-    "description": "To"
+    "description": "go",
+    "labels": [
+      {
+        "name": "critical",
+        "isChecked": true
+      },
+      {
+        "name": "needCR",
+        "isChecked": true
+      },
+      {
+        "name": "devBranch",
+        "isChecked": true
+      }
+    ],
+    "createdAt": "1718706873988"
   },
   {
-    "_id": "tqTJm",
-    "title": "Wjy",
-    "severity": 7,
-    "description": "Tpp"
-  },
-  {
-    "_id": "xaxqE",
+    "_id": "gaizi",
     "title": "Danger",
-    "severity": 9,
-    "description": "Yo"
-  },
-  {
-    "_id": "LaK6a",
-    "title": "Hy",
-    "severity": 2,
-    "description": "gt"
-  },
-  {
-    "_id": "5KQqZ",
-    "title": "Gy",
-    "severity": 1,
-    "description": "th"
+    "severity": 10,
+    "description": "It's dangerous",
+    "labels": [
+      {
+        "name": "critical",
+        "isChecked": true
+      },
+      {
+        "name": "needCR",
+        "isChecked": true
+      },
+      {
+        "name": "devBranch",
+        "isChecked": false
+      }
+    ],
+    "createdAt": "1718706902851"
   }
 ]

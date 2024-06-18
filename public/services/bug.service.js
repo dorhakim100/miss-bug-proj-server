@@ -25,9 +25,12 @@ function remove(bugId) {
   return axios.get(BASE_URL + '/' + bugId + '/remove').then((res) => res.data)
 }
 function save(bug) {
+  console.log(bug)
   const queryStr = `/save?title=${bug.title}&severity=${
     bug.severity
-  }&description=${bug.description}&_id=${bug._id || ''}`
+  }&description=${bug.description}&labels=${JSON.stringify(
+    bug.labels
+  )}&createdAt=${bug.createdAt}&_id=${bug._id || ''}`
 
   return axios.get(BASE_URL + queryStr).then((res) => res.data)
 }

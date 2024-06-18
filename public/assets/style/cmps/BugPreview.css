@@ -8,6 +8,8 @@
     border-radius: 5px;
 
     transition: 0.2s;
+
+    max-height: 300px;
 }
 
 .bug-preview:hover{

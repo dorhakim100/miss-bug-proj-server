@@ -73,8 +73,17 @@ app.get('/api/bug', (req, res) => {
 })
 
 app.get('/api/bug/save', (req, res) => {
-  const { _id, title, severity, description } = req.query
-  const bugToSave = { _id, title, severity: +severity, description }
+  const { _id, title, severity, description, createdAt } = req.query
+  let { labels } = req.query
+  labels = JSON.parse(labels)
+  const bugToSave = {
+    _id,
+    title,
+    severity: +severity,
+    description,
+    labels,
+    createdAt,
+  }
   console.log(bugToSave)
 
   bugsService.save(bugToSave).then((savedBug) => res.send(savedBug))

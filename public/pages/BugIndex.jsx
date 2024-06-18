@@ -43,6 +43,8 @@ export function BugIndex() {
 
   function onAddBug() {
     const bug = {}
+    const t = Date.now()
+    bug.createdAt = t
 
     Swal.fire({
       title: 'Bug title?',
@@ -74,18 +76,49 @@ export function BugIndex() {
           }).then((description) => {
             bug.description = description.value
             console.log(bug)
+            Swal.fire({
+              title: 'Bug labels?',
+              // input: 'checkbox',
+              html:
+                '<h3>critical <input type="checkbox" id="critical"  /></h3><p/>' +
+                '<h3>need-CR <input type="checkbox" id="needCR"  /></h3>' +
+                '<h3>dev-branch <input type="checkbox" id="devBranch"  /></h3>',
+              confirmButtonText: `
+                Add bug
+              `,
+              preConfirm: () => {
+                let critical =
+                  Swal.getPopup().querySelector('#critical').checked
+                let needCR = Swal.getPopup().querySelector('#needCR').checked
+                let devBranch =
+                  Swal.getPopup().querySelector('#devBranch').checked
+                bug.labels = [
+                  { name: 'critical', isChecked: critical },
+                  { name: 'needCR', isChecked: needCR },
+                  { name: 'devBranch', isChecked: devBranch },
+                ]
+                return {
+                  critical: critical,
+                  needCR: needCR,
+                  devBranch: devBranch,
+                }
+              },
+            }).then((data) => {
+              console.log(data)
+              console.log(bug)
 
-            bugService
-              .save(bug)
-              .then((savedBug) => {
-                console.log('Added Bug', savedBug)
-                setBugs((prevBugs) => [...prevBugs, savedBug])
-                showSuccessMsg('Bug added')
-              })
-              .catch((err) => {
-                console.log('Error from onAddBug ->', err)
-                showErrorMsg('Cannot add bug')
-              })
+              bugService
+                .save(bug)
+                .then((savedBug) => {
+                  console.log('Added Bug', savedBug)
+                  setBugs((prevBugs) => [...prevBugs, savedBug])
+                  showSuccessMsg('Bug added')
+                })
+                .catch((err) => {
+                  console.log('Error from onAddBug ->', err)
+                  showErrorMsg('Cannot add bug')
+                })
+            })
           })
           // })
         })
