@@ -9,6 +9,7 @@ import { bugsService } from './services/bugs.service.js'
 import { loggerService } from './services/logger.service.js'
 
 const app = express()
+app.use(express.json())
 
 const port = 3030
 
@@ -63,10 +64,17 @@ app.get('/api/bug/download', (req, res) => {
   })
 })
 app.get('/api/bug', (req, res) => {
+  const filterBy = {
+    txt: req.query.txt || '',
+    minSeverity: +req.query.minSeverity || 0,
+    pageIdx: +req.query.pageIdx || 0,
+  }
+  console.log(filterBy)
   bugsService
-    .query()
+    .query(filterBy)
     .then((bugs) => res.send(bugs))
     .catch((err) => {
+      // console.log(err)
       loggerService.error(`Couldn't get bugs`)
       res.status(500).send(`Couldn't get bugs`)
     })

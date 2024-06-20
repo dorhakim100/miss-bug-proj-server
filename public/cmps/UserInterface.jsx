@@ -1,7 +1,13 @@
 const { useRef } = React
 const { Link } = ReactRouterDOM
 
-export function UserInterface({ onAddBug, filter, setFilter, filterBy }) {
+export function UserInterface({
+  onAddBug,
+  filter,
+  setFilter,
+  filterBy,
+  changePage,
+}) {
   const textFilter = useRef(filter.txt)
   const severityFilter = useRef(filter.minSeverity)
 
@@ -27,8 +33,26 @@ export function UserInterface({ onAddBug, filter, setFilter, filterBy }) {
     console.log('works')
   }
 
+  function onChangePage(diff) {
+    if (filter.pageIdx === 0 && diff === -1) {
+      return
+    }
+    changePage(diff)
+  }
+
   return (
     <div className='user-interface-container'>
+      <div className='page-buttons-container'>
+        <i
+          onClick={() => onChangePage(-1)}
+          className='fa-solid fa-arrow-left'
+        ></i>
+        <span>{filter.pageIdx + 1}</span>
+        <i
+          onClick={() => onChangePage(1)}
+          className='fa-solid fa-arrow-right'
+        ></i>
+      </div>
       <input
         type='range'
         min={0}

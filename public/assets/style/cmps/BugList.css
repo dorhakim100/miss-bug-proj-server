@@ -6,6 +6,29 @@ h3{
 .user-interface-container{
 display: flex;
 justify-content: center;
+align-items: center;
+}
+
+.page-buttons-container{
+    display: flex;
+    gap: 15px;
+
+    margin: 15px;
+
+
+    background-color: rgb(140, 222, 224);
+    border-radius: 5px;
+}
+
+.page-buttons-container>*{
+    padding: 5px;
+    border-radius: 5px;
+    font-size: 1.5em;
+}
+
+.page-buttons-container>i:hover{
+    cursor: pointer;
+    background-color: cadetblue;
 }
 
 .user-interface-container>input{
@@ -37,3 +60,9 @@ justify-content: center;
     background-color: var(--clr1bg);
 }
 
+@media (max-width:500px) {
+    .user-interface-container{
+      flex-direction: column;
+        }
+    
+}

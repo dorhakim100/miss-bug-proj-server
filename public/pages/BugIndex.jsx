@@ -13,10 +13,15 @@ export function BugIndex() {
 
   useEffect(() => {
     // loadBugs()
-    filterBy(filter).then((bugs) => {
-      console.log(bugs)
-      setBugs(bugs)
-    })
+    // filterBy(filter).then((bugs) => {
+    //   console.log(bugs)
+    //   setBugs(bugs)
+    // })
+    bugService
+      .query(filter)
+      .then((bugs) => setBugs(bugs))
+      .catch((err) => console.log('err:', err))
+      .finally(console.log(bugs))
   }, [filter])
 
   function loadBugs() {
@@ -154,19 +159,40 @@ export function BugIndex() {
 
   function filterBy(filterBy) {
     console.log(filterBy)
-    const regExp = new RegExp(filterBy.txt, 'i')
+    // const regExp = new RegExp(filterBy.txt, 'i')
 
-    return bugService.query(bugs).then((bugs) => {
+    return bugService.query(filterBy).then((bugs) => {
       if (!filterBy.txt && !filterBy.minSeverity) {
         return bugs
       } else {
         return bugs
-          .filter(
-            (bug) => regExp.test(bug.title) || regExp.test(bug.description)
-          )
-          .filter((bug) => bug.severity >= filterBy.minSeverity)
+        // .filter(
+        // (bug) => regExp.test(bug.title) || regExp.test(bug.description)
+        // )
+        // .filter((bug) => bug.severity >= filterBy.minSeverity)
       }
     })
+  }
+
+  function changePage(diff) {
+    if (filter.pageIdx === 0 && diff === -1) {
+    }
+    console.log(filter)
+    const preFilter = filter
+    filter.pageIdx = preFilter.pageIdx + diff
+    setFilter(filter)
+    bugService.query(filter).then((bugs) => {
+      if (bugs.length === 0) {
+        filter.pageIdx = 0
+        bugService.query(filter).then((bugs) => {
+          setBugs(bugs)
+        })
+        return
+      }
+      setBugs(bugs)
+    })
+
+    console.log(filter)
   }
 
   return (
@@ -178,6 +204,7 @@ export function BugIndex() {
           filter={filter}
           setFilter={setFilter}
           filterBy={filterBy}
+          changePage={changePage}
         />
         <BugList bugs={bugs} onRemoveBug={onRemoveBug} onEditBug={onEditBug} />
       </main>
