@@ -111,7 +111,11 @@ export function BugIndex() {
             }).then((data) => {
               console.log(data)
               console.log(bug)
-
+              // bugService.query(filter).then((bugs) => {
+              //   if (bugs.length === 6) {
+              //     filter.pageIdx++
+              //   }
+              // })
               bugService
                 .save(bug)
                 .then((savedBug) => {

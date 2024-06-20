@@ -67,6 +67,20 @@ export function UserInterface({
       <Link to={'download'}>
         <button onClick={onDownloadPDF}>Download PDF</button>
       </Link>
+      <div className='label-sorting-container'>
+        <div className='label-input-container'>
+          <input type='checkbox' name='critical' id='critical' />
+          <label htmlFor='critical'>critical</label>
+        </div>
+        <div className='label-input-container'>
+          <input type='checkbox' name='needCR' id='needCR' />
+          <label htmlFor='needCR'>needCR</label>
+        </div>
+        <div className='label-input-container'>
+          <input type='checkbox' name='devBranch' id='devBranch' />
+          <label htmlFor='devBranch'>devBranch</label>{' '}
+        </div>
+      </div>
     </div>
   )
 }

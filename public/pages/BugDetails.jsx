@@ -44,7 +44,7 @@ export function BugDetails() {
       <div className='labels-container'>
         {bug.labels &&
           bug.labels.map((label) => {
-            return label.isChecked && <span>{label.name}</span>
+            return label.isChecked && <span key={label.name}>{label.name}</span>
           })}
       </div>
       <Link to='/bug'>Back to List</Link>
