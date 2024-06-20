@@ -26,6 +26,18 @@ function query(filterBy) {
     )
   }
 
+  console.log(filterBy.labels)
+
+  if (filterBy.labels?.length) {
+    filteredBugs = filteredBugs.filter((bug) => {
+      return filterBy.labels.every((label) => {
+        if (bug.labels.includes(label)) {
+          return bug
+        }
+      })
+    })
+  }
+
   const startIdx = filterBy.pageIdx * PAGE_SIZE
   filteredBugs = filteredBugs.slice(startIdx, startIdx + PAGE_SIZE)
   console.log(filteredBugs)

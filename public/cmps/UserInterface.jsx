@@ -7,6 +7,7 @@ export function UserInterface({
   setFilter,
   filterBy,
   changePage,
+  filterLabels,
 }) {
   const textFilter = useRef(filter.txt)
   const severityFilter = useRef(filter.minSeverity)
@@ -25,7 +26,12 @@ export function UserInterface({
         break
     }
     setFilter(() => {
-      return { txt: textFilter.current, minSeverity: severityFilter.current }
+      return {
+        txt: textFilter.current,
+        minSeverity: severityFilter.current,
+        pageIdx: filter.pageIdx,
+        labels: filter.labels,
+      }
     })
   }
 
@@ -38,6 +44,11 @@ export function UserInterface({
       return
     }
     changePage(diff)
+  }
+
+  function onFilterLabels(label) {
+    console.log(label)
+    filterLabels(label)
   }
 
   return (
@@ -69,15 +80,30 @@ export function UserInterface({
       </Link>
       <div className='label-sorting-container'>
         <div className='label-input-container'>
-          <input type='checkbox' name='critical' id='critical' />
+          <input
+            type='checkbox'
+            name='critical'
+            id='critical'
+            onChange={() => onFilterLabels('critical')}
+          />
           <label htmlFor='critical'>critical</label>
         </div>
         <div className='label-input-container'>
-          <input type='checkbox' name='needCR' id='needCR' />
+          <input
+            type='checkbox'
+            name='needCR'
+            id='needCR'
+            onChange={() => onFilterLabels('needCR')}
+          />
           <label htmlFor='needCR'>needCR</label>
         </div>
         <div className='label-input-container'>
-          <input type='checkbox' name='devBranch' id='devBranch' />
+          <input
+            type='checkbox'
+            name='devBranch'
+            id='devBranch'
+            onChange={() => onFilterLabels('devBranch')}
+          />
           <label htmlFor='devBranch'>devBranch</label>{' '}
         </div>
       </div>

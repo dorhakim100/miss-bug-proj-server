@@ -14,6 +14,7 @@ export const bugService = {
 }
 
 function query(filterBy = {}) {
+  console.log(filterBy)
   return axios.get(BASE_URL, { params: filterBy }).then((res) => res.data)
 }
 function getById(bugId) {
@@ -33,7 +34,9 @@ function save(bug) {
   return axios.get(BASE_URL + queryStr).then((res) => res.data)
 }
 
-function getDefaultFilter(filterBy = { txt: '', minSeverity: '', pageIdx: 0 }) {
+function getDefaultFilter(
+  filterBy = { txt: '', minSeverity: '', labels: [], pageIdx: 0 }
+) {
   // console.log(filterBy)
   return filterBy
 }

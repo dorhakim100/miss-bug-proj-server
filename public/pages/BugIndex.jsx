@@ -97,11 +97,21 @@ export function BugIndex() {
                 let needCR = Swal.getPopup().querySelector('#needCR').checked
                 let devBranch =
                   Swal.getPopup().querySelector('#devBranch').checked
-                bug.labels = [
-                  { name: 'critical', isChecked: critical },
-                  { name: 'needCR', isChecked: needCR },
-                  { name: 'devBranch', isChecked: devBranch },
-                ]
+                bug.labels = []
+                if (critical) {
+                  bug.labels.push('critical')
+                }
+                if (needCR) {
+                  bug.labels.push('needCR')
+                }
+                if (devBranch) {
+                  bug.labels.push('devBranch')
+                }
+                // bug.labels = [
+                //   critical && 'critical',
+                //   needCR && 'needCR',
+                //   devBranch && 'devBranch',
+                // ]
                 return {
                   critical: critical,
                   needCR: needCR,
@@ -199,6 +209,21 @@ export function BugIndex() {
     console.log(filter)
   }
 
+  function filterLabels(label) {
+    if (filter.labels.includes(label)) {
+      const labelIdx = filter.labels.findIndex(
+        (labelName) => labelName === label
+      )
+      filter.labels.splice(labelIdx, 1)
+    } else {
+      filter.labels.push(label)
+    }
+    bugService.query(filter).then((bugs) => {
+      console.log(bugs)
+      setBugs(bugs)
+    })
+  }
+
   return (
     <main>
       <h3>Bugs App</h3>
@@ -209,6 +234,7 @@ export function BugIndex() {
           setFilter={setFilter}
           filterBy={filterBy}
           changePage={changePage}
+          filterLabels={filterLabels}
         />
         <BugList bugs={bugs} onRemoveBug={onRemoveBug} onEditBug={onEditBug} />
       </main>
