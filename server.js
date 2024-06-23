@@ -64,9 +64,16 @@ app.get('/api/bug/download', (req, res) => {
   })
 })
 app.get('/api/bug', (req, res) => {
+  let severityDown
+  if (req.query.severityDown === 'true') {
+    severityDown = true
+  } else {
+    severityDown = false
+  }
   const filterBy = {
     txt: req.query.txt || '',
     minSeverity: +req.query.minSeverity || 0,
+    severityDown: severityDown,
     pageIdx: +req.query.pageIdx || 0,
     labels: req.query.labels || [],
   }

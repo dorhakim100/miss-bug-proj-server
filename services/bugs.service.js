@@ -11,8 +11,22 @@ const PAGE_SIZE = 3
 let bugs = utilService.readJsonFile('./data/bug.json')
 
 function query(filterBy) {
-  let filteredBugs = bugs
   console.log(filterBy)
+  let filteredBugs
+  // console.log(bugs)
+  if (filterBy.severityDown) {
+    filteredBugs = bugs.sort((a, b) => {
+      if (a.severity < b.severity) return 1
+      if (a.severity > b.severity) return -1
+      return 0
+    })
+  } else {
+    filteredBugs = bugs.sort((a, b) => {
+      if (a.severity < b.severity) return -1
+      if (a.severity > b.severity) return 1
+      return 0
+    })
+  }
 
   if (filterBy.txt) {
     const regExp = new RegExp(filterBy.txt, 'i')

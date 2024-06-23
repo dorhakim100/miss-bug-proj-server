@@ -224,6 +224,15 @@ export function BugIndex() {
     })
   }
 
+  function toggleDirectionToDown(isDown) {
+    filter.severityDown = isDown
+    filter.pageIdx = 0
+    bugService.query(filter).then((bugs) => {
+      console.log(bugs)
+      setBugs(bugs)
+    })
+  }
+
   return (
     <main>
       <h3>Bugs App</h3>
@@ -235,6 +244,7 @@ export function BugIndex() {
           filterBy={filterBy}
           changePage={changePage}
           filterLabels={filterLabels}
+          toggleDirectionToDown={toggleDirectionToDown}
         />
         <BugList bugs={bugs} onRemoveBug={onRemoveBug} onEditBug={onEditBug} />
       </main>

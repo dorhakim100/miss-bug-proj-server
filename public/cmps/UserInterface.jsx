@@ -8,6 +8,7 @@ export function UserInterface({
   filterBy,
   changePage,
   filterLabels,
+  toggleDirectionToDown,
 }) {
   const textFilter = useRef(filter.txt)
   const severityFilter = useRef(filter.minSeverity)
@@ -51,6 +52,11 @@ export function UserInterface({
     filterLabels(label)
   }
 
+  function onSortDirection({ target }) {
+    console.log(target.checked)
+    toggleDirectionToDown(target.checked)
+  }
+
   return (
     <div className='user-interface-container'>
       <div className='page-buttons-container'>
@@ -71,12 +77,18 @@ export function UserInterface({
         onChange={onSetFilter}
         title={severityFilter.current}
       />
+      <input type='checkbox' id='dir' onChange={onSortDirection} />
+      <label htmlFor='dir'>
+        Severity <i className='fa-solid fa-arrow-down'></i>
+      </label>
       <input type='text' placeholder='Search' onChange={onSetFilter} />
       <button className='add-btn' onClick={onAddBug}>
         Add Bug
       </button>
       <Link to={'download'}>
-        <button onClick={onDownloadPDF}>Download PDF</button>
+        <button onClick={onDownloadPDF}>
+          Download PDF <i className='fa-solid fa-download'></i>
+        </button>
       </Link>
       <div className='label-sorting-container'>
         <div className='label-input-container'>

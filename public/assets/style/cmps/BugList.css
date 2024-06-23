@@ -58,13 +58,18 @@ align-items: center;
     border-radius: 5px;
 }
 
+.label-input-container>label:hover{
+background-color: rgb(185, 218, 234);
+
+}
+
 .label-input-container:has(input:checked) label  {
     background-color: rgb(24, 28, 140);
     color: whitesmoke;
 }
 
 .add-btn{
-    height: 100px;
+    /* height: 100px; */
 }
 
 .bug-list {
@@ -77,7 +82,8 @@ align-items: center;
     height: 60vh;
     overflow-y: scroll;
 
-    margin: auto;
+    margin-top: 15px;
+    /* margin: auto; */
     /* width: 50%; */
 }
 

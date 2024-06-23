@@ -104,7 +104,7 @@
     {
       "_id": "yUtj9",
       "title": "Data loss on form submission",
-      "severity": 9,
+      "severity": 10,
       "description": "Submitting a form occasionally results in the loss of entered data. Issue observed when network connectivity is unstable.",
       "labels": [
         "critical"
@@ -121,4 +121,5 @@
       ],
       "createdAt": "1719071623481"
     }
+    
   ]

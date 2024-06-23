@@ -35,7 +35,13 @@ function save(bug) {
 }
 
 function getDefaultFilter(
-  filterBy = { txt: '', minSeverity: '', labels: [], pageIdx: 0 }
+  filterBy = {
+    txt: '',
+    minSeverity: '',
+    severityDown: false,
+    labels: [],
+    pageIdx: 0,
+  }
 ) {
   // console.log(filterBy)
   return filterBy
