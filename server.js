@@ -25,6 +25,7 @@ app.use(cookieParser())
 
 app.get('/api/bug/download', (req, res) => {
   bugsService.query().then((bugs) => {
+    console.log(bugs)
     const doc = new PDFDocument()
     const pdfsDir = './pdfs'
     const fileName = 'Bugs.pdf'

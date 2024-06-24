@@ -5,12 +5,21 @@ export const bugsService = {
   getById,
   remove,
   save,
+  // getAllBugs,
 }
 
 const PAGE_SIZE = 3
 let bugs = utilService.readJsonFile('./data/bug.json')
 
-function query(filterBy) {
+function query(
+  filterBy = {
+    severityDown: false,
+    txt: '',
+    minSeverity: 0,
+    labels: [],
+    pageIdx: null,
+  }
+) {
   console.log(filterBy)
   let filteredBugs
   // console.log(bugs)
@@ -51,11 +60,15 @@ function query(filterBy) {
       })
     })
   }
-
-  const startIdx = filterBy.pageIdx * PAGE_SIZE
-  filteredBugs = filteredBugs.slice(startIdx, startIdx + PAGE_SIZE)
-  console.log(filteredBugs)
-  return Promise.resolve(filteredBugs)
+  if (filterBy.pageIdx === null) {
+    console.log(filteredBugs)
+    return Promise.resolve(filteredBugs)
+  } else {
+    const startIdx = filterBy.pageIdx * PAGE_SIZE
+    filteredBugs = filteredBugs.slice(startIdx, startIdx + PAGE_SIZE)
+    console.log(filteredBugs)
+    return Promise.resolve(filteredBugs)
+  }
 }
 
 function getById(bugId) {
@@ -86,3 +99,8 @@ function save(bugToSave) {
 function _saveBugsToFile() {
   return utilService.writeJsonFile('./data/bug.json', bugs)
 }
+
+// function getAllBugs() {
+//   const promise = new Promise()
+//   return promise.resolve(bugs)
+// }
