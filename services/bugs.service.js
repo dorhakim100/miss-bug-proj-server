@@ -76,21 +76,35 @@ function getById(bugId) {
   return Promise.resolve(bug)
 }
 
-function remove(bugId) {
+function remove(bugId, loggedInUser) {
   console.log(bugs)
   const idx = bugs.findIndex((bug) => bug._id === bugId)
+  if (idx === -1) return Promise.reject('No such bug')
+  const bug = bugs[idx]
+  if (!loggedInUser.isAdmin && bug.owner._id !== loggedInUser._id) {
+    return Promise.reject('Not your bug')
+  }
   bugs.splice(idx, 1)
 
   return _saveBugsToFile()
 }
 
-function save(bugToSave) {
-  console.log(bugToSave)
+function save(bugToSave, loggedInUser) {
+  // console.log('bugToSave:', bugToSave)
+
   if (bugToSave._id) {
-    const idx = bugs.findIndex((bug) => bug._id === bugToSave._id)
-    bugs.splice(idx, 1, bugToSave)
+    const bugToUpdate = bugs.find((currBug) => currBug._id === bugToSave._id)
+    console.log('bugToUpdate: ', bugToUpdate)
+    if (!loggedInUser.isAdmin && bugToUpdate.owner._id !== loggedInUser._id) {
+      return Promise.reject('Not your bug')
+    }
+
+    bugToUpdate.severity = bugToSave.severity
+
+    return _saveBugsToFile().then(() => bugToUpdate)
   } else {
     bugToSave._id = utilService.makeId()
+    bugToSave.owner = loggedInUser
     bugs.push(bugToSave)
   }
   return _saveBugsToFile().then(() => bugToSave)

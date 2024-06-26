@@ -145,6 +145,7 @@ export function BugIndex() {
   }
 
   function onEditBug(bug) {
+    console.log('bla')
     let severity
     Swal.fire({
       title: 'Bug severity?',
@@ -153,6 +154,7 @@ export function BugIndex() {
     }).then((output) => {
       severity = +output.value
       const bugToSave = { ...bug, severity }
+      console.log(bugToSave)
       bugService
         .save(bugToSave)
         .then((savedBug) => {

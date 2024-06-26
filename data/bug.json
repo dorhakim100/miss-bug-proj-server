@@ -1,125 +1,200 @@
-
-  [
-    {
-      "_id": "vRZd7",
-      "title": "Couldn't load files",
-      "severity": 9,
-      "description": "Files failed to load when attempting to open them. Attempted several times without success.",
-      "labels": [
-        "critical",
-        "devBranch"
-      ],
-      "createdAt": "1718902162568"
-    },
-    {
-      "_id": "gPQb2",
-      "title": "UI layout broken on mobile devices",
-      "severity": 8,
-      "description": "UI elements are misaligned and overlapping on mobile screens. Issue observed across different devices and browsers.",
-      "labels": [
-        "needCR"
-      ],
-      "createdAt": "1718910578321"
-    },
-    {
-      "_id": "tYWs9",
-      "title": "Search functionality not returning results",
-      "severity": 7,
-      "description": "Performed multiple searches using different keywords, but no results were displayed. Search bar appears functional but does not fetch any data.",
-      "labels": [
-        "devBranch"
-      ],
-      "createdAt": "1718934097150"
-    },
-    {
-      "_id": "kLMe5",
-      "title": "404 error on profile page",
-      "severity": 6,
-      "description": "Navigating to the user profile page results in a 404 error. Attempted to access multiple user profiles with the same outcome.",
-      "labels": [
-        "devBranch"
-      ],
-      "createdAt": "1718947236812"
-    },
-    {
-      "_id": "wZPt3",
-      "title": "Forms submission not working",
-      "severity": 8,
-      "description": "Tried submitting various forms throughout the application, but none of them successfully submit the data. No error messages displayed.",
-      "labels": [
-        "needCR"
-      ],
-      "createdAt": "1718960112456"
-    },
-    {
-      "_id": "mNxq8",
-      "title": "Slow loading times on dashboard",
-      "severity": 5,
-      "description": "Dashboard takes significantly longer than usual to load. Noticed delays in fetching and rendering data widgets.",
-      "labels": [
-        "critical"
-      ],
-      "createdAt": "1718982209874"
-    },
-    {
-      "_id": "rGTw1",
-      "title": "Incorrect data displayed in analytics",
-      "severity": 7,
-      "description": "Analytics charts and graphs are displaying inaccurate data points. Checked against backend records which show correct information.",
-      "labels": [
-        "devBranch"
-      ],
-      "createdAt": "1719001192345"
-    },
-    {
-      "_id": "pKFr6",
-      "title": "Login page not responsive on desktop",
-      "severity": 6,
-      "description": "Login page elements are not resizing properly on desktop screens, causing buttons and input fields to overlap. Tried different browsers with the same issue.",
-      "labels": [
-        "needCR"
-      ],
-      "createdAt": "1719014856112"
-    },
-    {
-      "_id": "sAcv4",
-      "title": "Dropdown menu items missing",
-      "severity": 4,
-      "description": "Dropdown menu on navigation bar occasionally fails to display some items. Clicking on the menu reveals only a subset of expected options.",
-      "labels": [
-        "devBranch"
-      ],
-      "createdAt": "1719029387462"
-    },
-    {
-      "_id": "zWoq5",
-      "title": "Graphical glitches in image gallery",
-      "severity": 5,
-      "description": "Image thumbnails in the gallery are occasionally displaying graphical artifacts. Refreshing the page resolves the issue temporarily.",
-      "labels": [
-        "needCR"
-      ],
-      "createdAt": "1719043052123"
-    },
-    {
-      "_id": "yUtj9",
-      "title": "Data loss on form submission",
-      "severity": 10,
-      "description": "Submitting a form occasionally results in the loss of entered data. Issue observed when network connectivity is unstable.",
-      "labels": [
-        "critical"
-      ],
-      "createdAt": "1719057198562"
-    },
-    {
-      "_id": "qBnv3",
-      "title": "Error message not displaying on login failure",
-      "severity": 3,
-      "description": "Entering incorrect credentials does not trigger an error message. Page refresh required to retry login.",
-      "labels": [
-        "needCR"
-      ],
-      "createdAt": "1719071623481"
+[
+  {
+    "_id": "qBnv3",
+    "title": "Error message not displaying on login failure",
+    "severity": 2,
+    "description": "Entering incorrect credentials does not trigger an error message. Page refresh required to retry login.",
+    "labels": [
+      "needCR"
+    ],
+    "createdAt": 1719071623481,
+    "owner": {
+      "_id": "rrFME",
+      "fullName": "Dor Hakim",
+      "isAdmin": true
     }
-    
-  ]
+  },
+  {
+    "_id": "sAcv4",
+    "title": "Dropdown menu items missing",
+    "severity": 3,
+    "description": "Dropdown menu on navigation bar occasionally fails to display some items. Clicking on the menu reveals only a subset of expected options.",
+    "labels": [
+      "devBranch"
+    ],
+    "createdAt": 1719029387462,
+    "owner": {
+      "_id": "rrFME",
+      "fullName": "Dor Hakim",
+      "isAdmin": true
+    }
+  },
+  {
+    "_id": "mNxq8",
+    "title": "Slow loading times on dashboard",
+    "severity": 4,
+    "description": "Dashboard takes significantly longer than usual to load. Noticed delays in fetching and rendering data widgets.",
+    "labels": [
+      "critical"
+    ],
+    "createdAt": 1718982209874,
+    "owner": {
+      "_id": "rrFME",
+      "fullName": "Dor Hakim",
+      "isAdmin": true
+    }
+  },
+  {
+    "_id": "zWoq5",
+    "title": "Graphical glitches in image gallery",
+    "severity": 5,
+    "description": "Image thumbnails in the gallery are occasionally displaying graphical artifacts. Refreshing the page resolves the issue temporarily.",
+    "labels": [
+      "needCR"
+    ],
+    "createdAt": 1719043052123,
+    "owner": {
+      "_id": "rrFME",
+      "fullName": "Dor Hakim",
+      "isAdmin": true
+    }
+  },
+  {
+    "_id": "Q5AOG",
+    "title": "dor's",
+    "severity": 5,
+    "description": "dor's",
+    "labels": [
+      "critical",
+      "needCR",
+      "devBranch"
+    ],
+    "createdAt": 1719419408685,
+    "owner": {
+      "_id": "rrFME",
+      "fullName": "Dor Hakim",
+      "isAdmin": true
+    }
+  },
+  {
+    "_id": "kLMe5",
+    "title": "404 error on profile page",
+    "severity": 6,
+    "description": "Navigating to the user profile page results in a 404 error. Attempted to access multiple user profiles with the same outcome.",
+    "labels": [
+      "devBranch"
+    ],
+    "createdAt": 1718947236812,
+    "owner": {
+      "_id": "rrFME",
+      "fullName": "Dor Hakim",
+      "isAdmin": true
+    }
+  },
+  {
+    "_id": "pKFr6",
+    "title": "Login page not responsive on desktop",
+    "severity": 6,
+    "description": "Login page elements are not resizing properly on desktop screens, causing buttons and input fields to overlap. Tried different browsers with the same issue.",
+    "labels": [
+      "needCR"
+    ],
+    "createdAt": 1719014856112,
+    "owner": {
+      "_id": "rrFME",
+      "fullName": "Dor Hakim",
+      "isAdmin": true
+    }
+  },
+  {
+    "_id": "tYWs9",
+    "title": "Search functionality not returning results",
+    "severity": 7,
+    "description": "Performed multiple searches using different keywords, but no results were displayed. Search bar appears functional but does not fetch any data.",
+    "labels": [
+      "devBranch"
+    ],
+    "createdAt": 1718934097150,
+    "owner": {
+      "_id": "rrFME",
+      "fullName": "Dor Hakim",
+      "isAdmin": true
+    }
+  },
+  {
+    "_id": "rGTw1",
+    "title": "Incorrect data displayed in analytics",
+    "severity": 7,
+    "description": "Analytics charts and graphs are displaying inaccurate data points. Checked against backend records which show correct information.",
+    "labels": [
+      "devBranch"
+    ],
+    "createdAt": 1719001192345,
+    "owner": {
+      "_id": "rrFME",
+      "fullName": "Dor Hakim",
+      "isAdmin": true
+    }
+  },
+  {
+    "_id": "gPQb2",
+    "title": "UI layout broken on mobile devices",
+    "severity": 8,
+    "description": "UI elements are misaligned and overlapping on mobile screens. Issue observed across different devices and browsers.",
+    "labels": [
+      "needCR"
+    ],
+    "createdAt": 1718910578321,
+    "owner": {
+      "_id": "rrFME",
+      "fullName": "Dor Hakim",
+      "isAdmin": true
+    }
+  },
+  {
+    "_id": "wZPt3",
+    "title": "Forms submission not working",
+    "severity": 8,
+    "description": "Tried submitting various forms throughout the application, but none of them successfully submit the data. No error messages displayed.",
+    "labels": [
+      "needCR"
+    ],
+    "createdAt": 1718960112456,
+    "owner": {
+      "_id": "rrFME",
+      "fullName": "Dor Hakim",
+      "isAdmin": true
+    }
+  },
+  {
+    "_id": "vRZd7",
+    "title": "Couldn't load files",
+    "severity": 9,
+    "description": "Files failed to load when attempting to open them. Attempted several times without success.",
+    "labels": [
+      "critical",
+      "devBranch"
+    ],
+    "createdAt": 1718902162568,
+    "owner": {
+      "_id": "rrFME",
+      "fullName": "Dor Hakim",
+      "isAdmin": true
+    }
+  },
+  {
+    "_id": "yUtj9",
+    "title": "Data loss on form submission",
+    "severity": 10,
+    "description": "Submitting a form occasionally results in the loss of entered data. Issue observed when network connectivity is unstable.",
+    "labels": [
+      "critical"
+    ],
+    "createdAt": 1719057198562,
+    "owner": {
+      "_id": "rrFME",
+      "fullName": "Dor Hakim",
+      "isAdmin": true
+    }
+  }
+]

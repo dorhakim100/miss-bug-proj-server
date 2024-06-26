@@ -1,0 +1,15 @@
+[
+  {
+    "_id": "u101",
+    "username": "puki",
+    "fullname": "Puki Ja",
+    "password": "secret1"
+  },
+  {
+    "username": "dor100",
+    "password": "dor100",
+    "fullName": "Dor Hakim",
+    "_id": "rrFME",
+    "isAdmin": true
+  }
+]
