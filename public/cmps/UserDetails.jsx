@@ -1,11 +1,23 @@
 const { useState, useEffect } = React
+const { Link } = ReactRouterDOM
 import { userService } from '../services/user.service.js'
+import { bugService } from '../services/bug.service.js'
+
+import { BugList } from './BugList.jsx'
 
 export function UserDetails() {
   const [user, setUser] = useState(userService.getLoggedInUser())
+  const [userBugs, setUserBugs] = useState([])
 
   useEffect(() => {
     console.log(user)
+    const userId = user._id
+
+    userService.get(userId).then((user) => {
+      console.log(user)
+      console.log(user.userBugs)
+      setUserBugs(user.userBugs)
+    })
   }, [])
 
   return (
@@ -19,6 +31,20 @@ export function UserDetails() {
         assumenda, repellat ratione maiores, molestias laborum similique
         asperiores quibusdam temporibus.
       </lorem>
+      <h3>User's bugs:</h3>
+      <div className='users-bugs-container'>
+        {userBugs.map((bug) => {
+          return (
+            <div className='users-bug'>
+              <h3>{bug.title}</h3>
+              <p>{bug.description}</p>
+              <button>
+                <Link to={`/bug/${bug._id}`}>Details</Link>
+              </button>
+            </div>
+          )
+        })}
+      </div>
     </div>
   )
 }

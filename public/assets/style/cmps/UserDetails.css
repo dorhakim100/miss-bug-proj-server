@@ -8,3 +8,38 @@
 .user-details-container > lorem{
 margin-inline-start: 1em;
 }
+
+.users-bugs-container{
+    margin: 2em;
+    width: 80vw;
+    max-height: 40vh;
+    overflow-y: auto;
+
+    display:flex;
+    flex-wrap: wrap;
+
+    gap: 5px;
+
+    justify-content: center;
+}
+
+.users-bug{
+    background-color: rgb(247, 222, 255);
+    border: 1px solid black;
+    border-radius: 5px;
+
+    /* max-width: 200px; */
+    /* max-height: 200px; */
+
+    overflow-y: auto;
+
+    display: flex;
+    flex-direction: column;
+
+    align-items: center;
+}
+
+.users-bug>button{
+    width: fit-content;
+}
+

@@ -5,7 +5,7 @@ export const bugsService = {
   getById,
   remove,
   save,
-  // getAllBugs,
+  getAllUserBugs,
 }
 
 const PAGE_SIZE = 3
@@ -114,7 +114,10 @@ function _saveBugsToFile() {
   return utilService.writeJsonFile('./data/bug.json', bugs)
 }
 
-// function getAllBugs() {
-//   const promise = new Promise()
-//   return promise.resolve(bugs)
-// }
+function getAllUserBugs(userId) {
+  // console.log('allBugs:', bugs)
+  const userBugs = bugs.filter((bug) => bug.owner._id === userId)
+  console.log(userBugs)
+  return userBugs
+  // return Promise.resolve(userBugs)
+}

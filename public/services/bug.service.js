@@ -12,12 +12,24 @@ export const bugService = {
   save,
   remove,
   getDefaultFilter,
+  getAllOwnersBugs,
 }
 
 function query(filterBy = {}) {
   console.log(filterBy)
   return axios.get(BASE_URL, { params: filterBy }).then((res) => res.data)
 }
+
+function getAllOwnersBugs(userId) {
+  return axios.get(BASE_URL).then((res) => {
+    let bugs = res.data
+    console.log(bugs)
+    bugs = bugs.filter((bug) => bug.owner._id === userId)
+    console.log(bugs)
+    return bugs
+  })
+}
+
 function getById(bugId) {
   return axios.get(BASE_URL + '/' + bugId).then((res) => res.data)
   return axios.get(BASE_URL + '/' + bugId).then((res) => res.data)

@@ -1,6 +1,7 @@
 import fs from 'fs'
 import Cryptr from 'cryptr'
 import { utilService } from './util.service.js'
+import { bugsService } from './bugs.service.js'
 
 const cryptr = new Cryptr(process.env.SECRET1 || 'secret-1234')
 const users = utilService.readJsonFile('data/user.json')
@@ -45,13 +46,15 @@ function query() {
 }
 
 function getById(userId) {
-  let user = user.find((user) => user._id === userId)
+  let user = users.find((user) => user._id === userId)
   if (!user) return Promise.reject('User not found')
+  const userBugs = bugsService.getAllUserBugs(userId)
 
   user = {
     _id: user._id,
     username: user.username,
     fullName: user.fullName,
+    userBugs: userBugs,
   }
 
   return Promise.resolve(user)
