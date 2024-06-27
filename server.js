@@ -240,6 +240,7 @@ app.get('/api/user/:userId', (req, res) => {
   userService
     .getById(userId)
     .then((user) => {
+      console.log(user)
       res.send(user)
     })
     .catch((err) => {

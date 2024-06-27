@@ -4,7 +4,7 @@ const { useNavigate } = ReactRouter
 
 import { UserMsg } from './UserMsg.jsx'
 import { LoginSignUp } from './LoginSignUp.jsx'
-import { UserService, userService } from '../services/user.service.js'
+import { userService } from '../services/user.service.js'
 import { showErrorMsg } from '../services/event-bus.service.js'
 
 export function AppHeader() {

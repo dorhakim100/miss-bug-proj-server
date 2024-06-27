@@ -3,6 +3,7 @@ import { bugService } from '../services/bug.service.js'
 import { showSuccessMsg, showErrorMsg } from '../services/event-bus.service.js'
 import { BugList } from '../cmps/BugList.jsx'
 import { UserInterface } from '../cmps/UserInterface.jsx'
+import { UserDetails } from '../cmps/UserDetails.jsx'
 import { utilService } from '../services/util.service.js'
 
 const { useState, useEffect } = React

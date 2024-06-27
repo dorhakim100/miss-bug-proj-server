@@ -1,0 +1,10 @@
+.user-details-container{
+    display: flex;
+    flex-direction: column;
+
+    align-items: center;
+}
+
+.user-details-container > lorem{
+margin-inline-start: 1em;
+}
