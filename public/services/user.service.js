@@ -1,5 +1,7 @@
+import axios from 'axios'
+
 const STORAGE_KEY_LOGGEDIN_USER = 'loggedInUser'
-const BASE_URL = '/api/user/'
+const BASE_URL = '/api/user'
 
 export const userService = {
   login,
@@ -8,10 +10,17 @@ export const userService = {
   get,
   getLoggedInUser,
   getEmptyCredentials,
+  getAllUsers,
 }
 
 function get(userId) {
-  return axios.get(BASE_URL + userId).then((res) => res.data)
+  return axios.get(BASE_URL + '/' + userId).then((res) => res.data)
+}
+
+function getAllUsers() {
+  const user = getLoggedInUser()
+  if (!user.isAdmin) return
+  return axios.get(BASE_URL).then((res) => res.data)
 }
 
 function getLoggedInUser() {
