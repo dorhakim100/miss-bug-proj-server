@@ -15,21 +15,6 @@
     }
   },
   {
-    "_id": "sAcv4",
-    "title": "Dropdown menu items missing",
-    "severity": 3,
-    "description": "Dropdown menu on navigation bar occasionally fails to display some items. Clicking on the menu reveals only a subset of expected options.",
-    "labels": [
-      "devBranch"
-    ],
-    "createdAt": 1719029387462,
-    "owner": {
-      "_id": "rrFME",
-      "fullName": "Dor Hakim",
-      "isAdmin": true
-    }
-  },
-  {
     "_id": "mNxq8",
     "title": "Slow loading times on dashboard",
     "severity": 4,
@@ -38,6 +23,34 @@
       "critical"
     ],
     "createdAt": 1718982209874,
+    "owner": {
+      "_id": "rrFME",
+      "fullName": "Dor Hakim",
+      "isAdmin": true
+    }
+  },
+  {
+    "_id": "4fguM",
+    "title": "Puki's",
+    "severity": 4,
+    "description": "Puki's",
+    "labels": [
+      "needCR"
+    ],
+    "createdAt": 1719486533529,
+    "owner": {
+      "_id": "u101"
+    }
+  },
+  {
+    "_id": "sAcv4",
+    "title": "Dropdown menu items missing",
+    "severity": 3,
+    "description": "Dropdown menu on navigation bar occasionally fails to display some items. Clicking on the menu reveals only a subset of expected options.",
+    "labels": [
+      "devBranch"
+    ],
+    "createdAt": 1719029387462,
     "owner": {
       "_id": "rrFME",
       "fullName": "Dor Hakim",
@@ -74,19 +87,6 @@
       "_id": "rrFME",
       "fullName": "Dor Hakim",
       "isAdmin": true
-    }
-  },
-  {
-    "_id": "4fguM",
-    "title": "Puki's",
-    "severity": 4,
-    "description": "Puki's",
-    "labels": [
-      "needCR"
-    ],
-    "createdAt": 1719486533529,
-    "owner": {
-      "_id": "u101"
     }
   },
   {

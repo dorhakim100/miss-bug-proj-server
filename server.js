@@ -207,7 +207,7 @@ app.get('/api/bug/:bugId', (req, res) => {
 
 app.delete('/api/bug/:bugId', (req, res) => {
   const loggedInUser = userService.validateToken(req.cookies.loginToken)
-  if (!loggedInUser) return res.status(401).send('Cannot remove car')
+  if (!loggedInUser) return res.status(401).send('Cannot remove bug')
 
   const { bugId } = req.params
   bugsService
@@ -279,6 +279,25 @@ app.post('/api/auth/signup', (req, res) => {
 app.post('/api/auth/logout', (req, res) => {
   res.clearCookie('loginToken')
   res.send('logged-out!')
+})
+
+app.delete('/api/user/:userId', (req, res) => {
+  const loggedInUser = userService.validateToken(req.cookies.loginToken)
+  if (!loggedInUser) return res.status(401).send('Cannot remove user')
+
+  const { userId } = req.params
+  console.log(userId)
+  userService
+    .remove(userId, loggedInUser)
+    .then(() => {
+      loggerService.info(`User ${userId} removed`)
+
+      res.send('Removed!')
+    })
+    .catch((err) => {
+      loggerService.error('Cannot remove user', err)
+      res.status(400).send('Cannot remove user')
+    })
 })
 
 // app.get('/**', (req, res) => {

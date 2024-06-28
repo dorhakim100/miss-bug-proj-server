@@ -40,7 +40,9 @@ export function AppHeader() {
         <nav className='app-nav'>
           <NavLink to='/'>Home</NavLink> |<NavLink to='/bug'>Bugs</NavLink> |
           <NavLink to='/about'>About</NavLink>{' '}
-          {user.isAdmin && <NavLink to='/userIndex'>User Index</NavLink>}
+          {user && user.isAdmin && (
+            <NavLink to='/userIndex'>User Index</NavLink>
+          )}
         </nav>
         <h1>Bugs are Forever</h1>
       </section>

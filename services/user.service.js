@@ -4,7 +4,7 @@ import { utilService } from './util.service.js'
 import { bugsService } from './bugs.service.js'
 
 const cryptr = new Cryptr(process.env.SECRET1 || 'secret-1234')
-const users = utilService.readJsonFile('data/user.json')
+let users = utilService.readJsonFile('data/user.json')
 
 export const userService = {
   query,
@@ -60,7 +60,10 @@ function getById(userId) {
   return Promise.resolve(user)
 }
 
-function remove(userId) {
+function remove(userId, loggedInUser) {
+  if (!loggedInUser.isAdmin) {
+    return Promise.reject(`You're not admin`)
+  }
   users = users.filter((user) => user._id !== userId)
   return _saveUsersToFile()
 }

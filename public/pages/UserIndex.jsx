@@ -1,6 +1,7 @@
 const { useState, useEffect } = React
 
 import { userService } from '../services/user.service.js'
+import { showSuccessMsg, showErrorMsg } from '../services/event-bus.service.js'
 
 export function UserIndex() {
   const [user, setUser] = useState(userService.getLoggedInUser())
@@ -13,6 +14,22 @@ export function UserIndex() {
       setUsers(users)
     })
   }, [])
+
+  function onRemoveUser(userId) {
+    console.log(userId)
+    userService
+      .removeUser(userId)
+      .then(() => {
+        userService.getAllUsers().then((users) => {
+          setUsers(users)
+          showSuccessMsg('User was deleted')
+        })
+      })
+      .catch((err) => {
+        console.log(err)
+        showErrorMsg('There was an error')
+      })
+  }
 
   return (
     <div className='user-index-container'>
@@ -30,7 +47,11 @@ export function UserIndex() {
                 </h3>
                 <button className='password-reveal'>Hold to reveal</button>
                 <h4>ID: {user._id}</h4>
-                {!user.isAdmin && <button>Remove User</button>}
+                {!user.isAdmin && (
+                  <button onClick={() => onRemoveUser(user._id)}>
+                    Remove User
+                  </button>
+                )}
               </div>
             )
         })}

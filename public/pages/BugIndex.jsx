@@ -152,6 +152,12 @@ export function BugIndex() {
       title: 'Bug severity?',
       input: 'number',
       icon: 'warning',
+      inputValue: bug.severity,
+      inputAttributes: {
+        min: 1,
+        max: 10,
+        step: 1,
+      },
     }).then((output) => {
       severity = +output.value
       const bugToSave = { ...bug, severity }

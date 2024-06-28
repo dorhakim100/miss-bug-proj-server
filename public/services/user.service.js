@@ -11,12 +11,16 @@ export const userService = {
   getLoggedInUser,
   getEmptyCredentials,
   getAllUsers,
+  removeUser,
 }
 
 function get(userId) {
   return axios.get(BASE_URL + '/' + userId).then((res) => res.data)
 }
-
+function removeUser(userId) {
+  console.log(userId)
+  return axios.delete(BASE_URL + '/' + userId).then((res) => res.data)
+}
 function getAllUsers() {
   const user = getLoggedInUser()
   if (!user.isAdmin) return
